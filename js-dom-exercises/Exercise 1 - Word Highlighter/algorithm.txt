@@ -1,0 +1,10 @@
+STEPS:
+1: select the element with a parapgrah
+2: get the text content and split it
+3: create an empty object
+4: iterate through the text and add each wprd and its occurence in an object
+5: get the entries and sort them
+6: get the 5 most often occuring words
+7: highlight those 5 words
+8: underline the ones that start with a capital letter
+

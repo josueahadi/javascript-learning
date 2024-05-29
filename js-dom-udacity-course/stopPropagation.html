@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+ 
+<head>
+ 
+    <!-- jQuery library -->
+    <script src="https://code.jquery.com/jquery-git.js"></script>
+</head>
+ 
+<body>
+    <div id="parentDiv">
+
+        <!-- <p id="para">Paragraph 1</p> -->
+
+        <button id="first">
+            Button 1
+        </button>
+
+        <button id="second">
+            Button 2
+        </button>
+
+    </div>
+     
+    <script>
+        parentDiv = document.querySelector('#parentDiv')
+        parentDiv.addEventListener('click', function () {
+            alert('ParentDiv says ola!');
+        });
+
+        myDiv1 = document.querySelector('#first')
+        myDiv1.addEventListener('click', function () {
+            alert('Button 1 says hello');
+        });
+
+        myDiv2 = document.querySelector('#second')
+        myDiv2.addEventListener('click', function () {
+            alert('Button 2 says hello');
+            event.stopPropagation();
+        });
+    </script>
+</body>
+ 
+</html>

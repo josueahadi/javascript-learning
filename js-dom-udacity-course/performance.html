@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // const t0 = performance.now();
+        // const newCustomDiv = document.createElement('div');
+        // for (let i = 1; i <= 5; i++){
+        //     const newPara = document.createElement('p');
+        //     newPara.textContent = `This is paragraph number ${i}`;
+
+        //     newCustomDiv.appendChild(newPara);
+        // }
+        // document.body.appendChild(newCustomDiv);
+        // const t1 = performance.now();
+        // console.log(`Call to create 5 paragraphs took ${t1 - t0} milliseconds`);
+
+        
+        const t0 = performance.now();
+
+        const fragment = document.createDocumentFragment();
+
+        for (let i = 0; i <= 5; i++) {
+            const newPara = document.createElement('p');
+            newPara.textContent = `This is paragraph number ${i}`;
+            fragment.appendChild(newPara);
+        }
+
+        document.body.appendChild(fragment);
+        const t1 = performance.now();
+
+        console.log(`Call to create 5 paragraphs took ${t1 - t0} milliseconds`);
+
+        
+    </script>
+</body>
+</html>

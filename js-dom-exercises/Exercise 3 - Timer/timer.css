@@ -1,0 +1,17 @@
+#myTimer {
+    color: red;
+    font-size: 64px;
+}
+.timing{
+    display: flex;
+    gap: 3;
+}
+.controllers{
+    display: flex;
+    gap: 3;
+    place-items: center;
+    
+}
+body{
+   place-items: center;
+}
