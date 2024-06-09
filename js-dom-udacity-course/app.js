@@ -39,5 +39,12 @@ form.addEventListener('submit', function(event){
     //         input.remove();
     //     });
     // });
-    
 });
+
+document.body.style.fontFamily = 'Roboto, sans-serif';
+const labels = document.querySelectorAll('label');
+for (let label of labels) {
+    label.style.color = 'red';
+    label.style.fontWeight = 'bold';
+    label.style.fontSize = '1em';
+}
