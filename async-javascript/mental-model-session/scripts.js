@@ -53,17 +53,17 @@ fetchData('https://jsonplaceholder.typicode.com/todos');
 // and stops displaying after 5 seconds
 
 
-// function displayNumber() {
-//     let count = 2;
-//     const interval = setInterval(() => {
-//         console.log("I am a number");
-//         count+=2;
-//         if (count > 5) {
-//             clearInterval(interval);
-//             console.log('Stopped counting after 5 seconds')
-//         }
-//     }, 2000);
-// }
+function displayNumber() {
+    let count = 0;
+    const interval = setInterval(() => {
+        console.log(count);
+        count++;
+        if (count >= 5) {
+            clearInterval(interval);
+            console.log('Stopped counting after 5 seconds')
+        }
+    }, 2000);
+}
 
 // function displayNumber() {
 //     // let count = 0;
@@ -81,4 +81,4 @@ fetchData('https://jsonplaceholder.typicode.com/todos');
       
 // }
 
-//displayNumber();
+displayNumber();
