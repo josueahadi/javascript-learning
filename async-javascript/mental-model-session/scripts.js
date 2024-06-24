@@ -55,30 +55,16 @@ fetchData('https://jsonplaceholder.typicode.com/todos');
 
 function displayNumber() {
     let count = 0;
+    console.log(`Start counting`)
     const interval = setInterval(() => {
         console.log(count);
         count++;
-        if (count >= 5) {
-            clearInterval(interval);
-            console.log('Stopped counting after 5 seconds')
-        }
     }, 2000);
+
+    setTimeout(() => {
+        clearInterval(interval);
+        console.log(`Stopped counting after 5 seconds`);
+    }, 5000)
 }
-
-// function displayNumber() {
-//     // let count = 0;
-//     const inteval = setInterval(() => {
-//         console.log('I am a number')
-//         // count++;
-//         // if (count> 5) {
-//         //     clearInterval(interval);
-//         // }
-//     }, 2000);
-
-//     setTimeout(() => {
-//         clearInterval(interval)
-//     }, 5000);
-      
-// }
 
 displayNumber();
