@@ -109,8 +109,30 @@
 // promise2.then(data => console.log(data)).catch(error => console.error(error));
 
 function fetchToDo() {
-    // Create a new XMLHttpRequest object
     var xhr = new XMLHttpRequest();
-
-    // Configure it: GET-request for the URL /todos/1
+    xhr.open('GET', 'https://jsonplaceholder.typicode.com/todos', true);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+               try {
+                const data = JSON.parse(xhr.responseText);
+                console.log(data);
+               } catch(e) {
+                console.error('Error parsing JSON reponse:', e)
+               }
+            } else {
+                console.log('Error: failed to fetch data. Status code:', xhr.status)
+            }
+        }
+    }
+    xhr.onerror = function() {
+        console.error('Network error or invalid URL');
+    }
+    xhr.send();
 }
+
+fetchToDo();
+
+
+
+// 5. 
