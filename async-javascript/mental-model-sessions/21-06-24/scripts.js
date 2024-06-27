@@ -93,17 +93,24 @@
 // console.log(promise)
 
 
-// 4&5. 
+// 4. Write a JavaScript function fetchToDo that uses XMLHttpRequest to fetch data from the given URL
 
-async function fetchToDo(url) {
-    try {
-        const response = await fetch(url);
-        const data = await response.json();
-        return data;
-    } catch (error) {
-        throw new Error(`An error occurred: ${error.message}`);
-    }
+// async function fetchToDo(url) {
+//     try {
+//         const response = await fetch(url);
+//         const data = await response.json();
+//         return data;
+//     } catch (error) {
+//         throw new Error(`An error occurred: ${error.message}`);
+//     }
+// }
+
+// const promise2 = fetchToDo('https://jsonplaceholder.typicode.com/todos');
+// promise2.then(data => console.log(data)).catch(error => console.error(error));
+
+function fetchToDo() {
+    // Create a new XMLHttpRequest object
+    var xhr = new XMLHttpRequest();
+
+    // Configure it: GET-request for the URL /todos/1
 }
-
-const promise2 = fetchToDo('https://jsonplaceholder.typicode.com/todos');
-promise2.then(data => console.log(data)).catch(error => console.error(error));
