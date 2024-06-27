@@ -108,31 +108,59 @@
 // const promise2 = fetchToDo('https://jsonplaceholder.typicode.com/todos');
 // promise2.then(data => console.log(data)).catch(error => console.error(error));
 
-function fetchToDo() {
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'https://jsonplaceholder.typicode.com/todos', true);
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState === 4) {
-            if (xhr.status === 200) {
-               try {
-                const data = JSON.parse(xhr.responseText);
-                console.log(data);
-               } catch(e) {
-                console.error('Error parsing JSON reponse:', e)
-               }
-            } else {
-                console.log('Error: failed to fetch data. Status code:', xhr.status)
-            }
+// function fetchToDo() {
+//     var xhr = new XMLHttpRequest();
+//     xhr.open('GET', 'https://jsonplaceholder.typicode.com/todos', true);
+//     xhr.onreadystatechange = function() {
+//         if (xhr.readyState === 4) {
+//             if (xhr.status === 200) {
+//                try {
+//                 const data = JSON.parse(xhr.responseText);
+//                 console.log(data);
+//                } catch(e) {
+//                 console.error('Error parsing JSON reponse:', e)
+//                }
+//             } else {
+//                 console.log('Error: failed to fetch data. Status code:', xhr.status)
+//             }
+//         }
+//     }
+//     xhr.onerror = function() {
+//         console.error('Network error or invalid URL');
+//     }
+//     xhr.send();
+// }
+
+// fetchToDo();
+
+
+
+// 5. Extending the function with custom headers and JSON Payload
+
+function fetchTodoWithHeadersAndPayload(url, payload) {
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', url, true);
+
+    // Set custom headers
+    xhr.setRequestHeader('User-Agent', 'MyCustomApp');
+    xhr.setRequestHeader('Content-Type', 'application/json');
+
+    xhr.onload = function() {
+        if (xhr.status >= 200 && xhr.status < 400) {
+            let data = JSON.parse(xhr.responseText);
+            console.log(data);
+        } else {
+            console.error("Server error: ", xhr.status);
         }
-    }
+    };
     xhr.onerror = function() {
-        console.error('Network error or invalid URL');
-    }
-    xhr.send();
+        console.log("Connection error");
+    };
+
+    let jsonPayload = JSON.stringify(payload)
+    xhr.send(jsonPayload);
 }
 
-fetchToDo();
-
-
-
-// 5. 
+const todoId = 1;
+const payload = { completed: false, title: 'New Task' };
+fetchTodoWithHeadersAndPayload(`https://jsonplaceholder.typicode.com/todos/${todoId}`, payload);
