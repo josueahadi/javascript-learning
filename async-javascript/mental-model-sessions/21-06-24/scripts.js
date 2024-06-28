@@ -27,13 +27,13 @@
 //     const controller = new AbortController();
 //     const signal = controller.signal;
 
-//     const timeout = setTimeout(() => {
+//     const timeoutId = setTimeout(() => {
 //         controller.abort();
 //     }, 10);
     
 //     fetch(url, {signal})
 //     .then(response => {
-//         clearTimeout(timeout);
+//         clearTimeout(timeoutId);
 //         console.log(`Response received: ${response}`);
 //     })
 //     .catch (error => {
