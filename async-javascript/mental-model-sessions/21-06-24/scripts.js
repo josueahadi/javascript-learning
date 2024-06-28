@@ -137,30 +137,59 @@
 
 // 5. Extending the function with custom headers and JSON Payload
 
-function fetchTodoWithHeadersAndPayload(url, payload) {
-    const xhr = new XMLHttpRequest();
-    xhr.open('POST', url, true);
+// function fetchTodoWithHeadersAndPayload(url, payload) {
+//     const xhr = new XMLHttpRequest();
+//     xhr.open('POST', url, true);
 
-    // Set custom headers
-    xhr.setRequestHeader('User-Agent', 'MyCustomApp');
-    xhr.setRequestHeader('Content-Type', 'application/json');
+//     // Set custom headers
+//     xhr.setRequestHeader('User-Agent', 'MyCustomApp');
+//     xhr.setRequestHeader('Content-Type', 'application/json');
 
-    xhr.onload = function() {
-        if (xhr.status >= 200 && xhr.status < 400) {
-            let data = JSON.parse(xhr.responseText);
-            console.log(data);
-        } else {
-            console.error("Server error: ", xhr.status);
-        }
-    };
-    xhr.onerror = function() {
-        console.log("Connection error");
-    };
+//     xhr.onload = function() {
+//         if (xhr.status >= 200 && xhr.status < 400) {
+//             let data = JSON.parse(xhr.responseText);
+//             console.log(data);
+//         } else {
+//             console.error("Server error: ", xhr.status);
+//         }
+//     };
+//     xhr.onerror = function() {
+//         console.log("Connection error");
+//     };
 
-    let jsonPayload = JSON.stringify(payload)
-    xhr.send(jsonPayload);
+//     let jsonPayload = JSON.stringify(payload)
+//     xhr.send(jsonPayload);
+// }
+
+// const todoId = 1;
+// const payload = { completed: false, title: 'New Task' };
+// fetchTodoWithHeadersAndPayload(`https://jsonplaceholder.typicode.com/todos/${todoId}`, payload);
+
+
+async function fetchTodoWithHeadersAndPayload(url, payload) {
+    try {
+        const response = await fetch(url, {
+            method: 'POST',
+            body: JSON.stringify(payload),
+            headers: {
+                'Content-Type': 'application/json',
+                'User-Agent': 'CustomUserAgent/1.0'
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        } 
+        
+        const data = await response.json();
+        console.log(data);
+        return data;
+    }
+    catch(error) {
+        console.error('There was a problem with the fetch operation:', error);
+    }
 }
 
-const todoId = 1;
 const payload = { completed: false, title: 'New Task' };
-fetchTodoWithHeadersAndPayload(`https://jsonplaceholder.typicode.com/todos/${todoId}`, payload);
+
+fetchTodoWithHeadersAndPayload(`https://jsonplaceholder.typicode.com/todos`, payload);
