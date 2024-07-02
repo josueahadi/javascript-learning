@@ -1,27 +1,27 @@
 // 1. Write a function that takes a URL and fetches data from that URL 
 // but aborts when the request takes more than 10ms
 
-// async function fetchData(url) {
-//     const controller = new AbortController();
-//     const signal = controller.signal;
+async function fetchData(url) {
+    const controller = new AbortController();
+    const signal = controller.signal;
 
-//     const timeout = setTimeout(() => {
-//         controller.abort();
-//     }, 4000);
-//     try {
-//         const response = await fetch(url, {signal});
-//         clearTimeout(timeout);
-//         console.log(`Response received: ${response}`);
-//     } catch (error) {
-//         if (error.name == 'AbortError') {
-//             console.log('Request rejected due to a timeout')
-//         } else {
-//             console.log('An error occured:', error.message)
-//         }
+    const timeout = setTimeout(() => {
+        controller.abort();
+    }, 4000);
+    try {
+        const response = await fetch(url, {signal});
+        clearTimeout(timeout);
+        console.log(`Response received: ${response}`);
+    } catch (error) {
+        if (error.name == 'AbortError') {
+            console.log('Request rejected due to a timeout')
+        } else {
+            console.log('An error occured:', error.message)
+        }
         
-//     }
+    }
     
-// }
+}
 
 // function fetchData(url) {
 //     const controller = new AbortController();
